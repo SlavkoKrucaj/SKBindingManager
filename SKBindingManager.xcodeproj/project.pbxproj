@@ -20,6 +20,8 @@
 		9FA2D06F160DB3960008BDB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D050160DB3950008BDB1 /* Foundation.framework */; };
 		9FA2D077160DB3960008BDB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2D075160DB3960008BDB1 /* InfoPlist.strings */; };
 		9FA2D07A160DB3960008BDB1 /* SKBindingManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2D079160DB3960008BDB1 /* SKBindingManagerTests.m */; };
+		9FA2D087160DB3B30008BDB1 /* DemoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2D084160DB3B30008BDB1 /* DemoModel.m */; };
+		9FA2D088160DB3B30008BDB1 /* SKBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2D086160DB3B30008BDB1 /* SKBindingManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,21 +39,25 @@
 		9FA2D04E160DB3950008BDB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9FA2D050160DB3950008BDB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9FA2D052160DB3950008BDB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9FA2D056160DB3960008BDB1 /* SKBindingManager-Info.plist */ = {isa = PBXFileReference; path = "SKBindingManager-Info.plist"; sourceTree = "<group>"; };
+		9FA2D056160DB3960008BDB1 /* SKBindingManager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKBindingManager-Info.plist"; sourceTree = "<group>"; };
 		9FA2D058160DB3960008BDB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FA2D05A160DB3960008BDB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9FA2D05C160DB3960008BDB1 /* SKBindingManager-Prefix.pch */ = {isa = PBXFileReference; path = "SKBindingManager-Prefix.pch"; sourceTree = "<group>"; };
-		9FA2D05D160DB3960008BDB1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		9FA2D05C160DB3960008BDB1 /* SKBindingManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKBindingManager-Prefix.pch"; sourceTree = "<group>"; };
+		9FA2D05D160DB3960008BDB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9FA2D05E160DB3960008BDB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9FA2D060160DB3960008BDB1 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		9FA2D060160DB3960008BDB1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9FA2D061160DB3960008BDB1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9FA2D064160DB3960008BDB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		9FA2D06B160DB3960008BDB1 /* SKBindingManagerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKBindingManagerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA2D06C160DB3960008BDB1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9FA2D074160DB3960008BDB1 /* SKBindingManagerTests-Info.plist */ = {isa = PBXFileReference; path = "SKBindingManagerTests-Info.plist"; sourceTree = "<group>"; };
+		9FA2D074160DB3960008BDB1 /* SKBindingManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKBindingManagerTests-Info.plist"; sourceTree = "<group>"; };
 		9FA2D076160DB3960008BDB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9FA2D078160DB3960008BDB1 /* SKBindingManagerTests.h */ = {isa = PBXFileReference; path = SKBindingManagerTests.h; sourceTree = "<group>"; };
+		9FA2D078160DB3960008BDB1 /* SKBindingManagerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBindingManagerTests.h; sourceTree = "<group>"; };
 		9FA2D079160DB3960008BDB1 /* SKBindingManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBindingManagerTests.m; sourceTree = "<group>"; };
+		9FA2D083160DB3B30008BDB1 /* DemoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModel.h; sourceTree = "<group>"; };
+		9FA2D084160DB3B30008BDB1 /* DemoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModel.m; sourceTree = "<group>"; };
+		9FA2D085160DB3B30008BDB1 /* SKBindingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBindingManager.h; sourceTree = "<group>"; };
+		9FA2D086160DB3B30008BDB1 /* SKBindingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBindingManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,10 @@
 		9FA2D054160DB3960008BDB1 /* SKBindingManager */ = {
 			isa = PBXGroup;
 			children = (
+				9FA2D083160DB3B30008BDB1 /* DemoModel.h */,
+				9FA2D084160DB3B30008BDB1 /* DemoModel.m */,
+				9FA2D085160DB3B30008BDB1 /* SKBindingManager.h */,
+				9FA2D086160DB3B30008BDB1 /* SKBindingManager.m */,
 				9FA2D05D160DB3960008BDB1 /* AppDelegate.h */,
 				9FA2D05E160DB3960008BDB1 /* AppDelegate.m */,
 				9FA2D060160DB3960008BDB1 /* ViewController.h */,
@@ -261,6 +271,8 @@
 				9FA2D05B160DB3960008BDB1 /* main.m in Sources */,
 				9FA2D05F160DB3960008BDB1 /* AppDelegate.m in Sources */,
 				9FA2D062160DB3960008BDB1 /* ViewController.m in Sources */,
+				9FA2D087160DB3B30008BDB1 /* DemoModel.m in Sources */,
+				9FA2D088160DB3B30008BDB1 /* SKBindingManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
