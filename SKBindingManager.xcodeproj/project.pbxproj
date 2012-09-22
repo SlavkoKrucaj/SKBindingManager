@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9FA2D04F160DB3950008BDB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D04E160DB3950008BDB1 /* UIKit.framework */; };
+		9FA2D051160DB3950008BDB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D050160DB3950008BDB1 /* Foundation.framework */; };
+		9FA2D053160DB3950008BDB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D052160DB3950008BDB1 /* CoreGraphics.framework */; };
+		9FA2D059160DB3960008BDB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2D057160DB3960008BDB1 /* InfoPlist.strings */; };
+		9FA2D05B160DB3960008BDB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2D05A160DB3960008BDB1 /* main.m */; };
+		9FA2D05F160DB3960008BDB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2D05E160DB3960008BDB1 /* AppDelegate.m */; };
+		9FA2D062160DB3960008BDB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2D061160DB3960008BDB1 /* ViewController.m */; };
+		9FA2D065160DB3960008BDB1 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2D063160DB3960008BDB1 /* ViewController.xib */; };
+		9FA2D06D160DB3960008BDB1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D06C160DB3960008BDB1 /* SenTestingKit.framework */; };
+		9FA2D06E160DB3960008BDB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D04E160DB3950008BDB1 /* UIKit.framework */; };
+		9FA2D06F160DB3960008BDB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D050160DB3950008BDB1 /* Foundation.framework */; };
+		9FA2D077160DB3960008BDB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2D075160DB3960008BDB1 /* InfoPlist.strings */; };
+		9FA2D07A160DB3960008BDB1 /* SKBindingManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2D079160DB3960008BDB1 /* SKBindingManagerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9FA2D070160DB3960008BDB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FA2D041160DB3950008BDB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FA2D049160DB3950008BDB1;
+			remoteInfo = SKBindingManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9FA2D04A160DB3950008BDB1 /* SKBindingManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKBindingManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA2D04E160DB3950008BDB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9FA2D050160DB3950008BDB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FA2D052160DB3950008BDB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9FA2D056160DB3960008BDB1 /* SKBindingManager-Info.plist */ = {isa = PBXFileReference; path = "SKBindingManager-Info.plist"; sourceTree = "<group>"; };
+		9FA2D058160DB3960008BDB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FA2D05A160DB3960008BDB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9FA2D05C160DB3960008BDB1 /* SKBindingManager-Prefix.pch */ = {isa = PBXFileReference; path = "SKBindingManager-Prefix.pch"; sourceTree = "<group>"; };
+		9FA2D05D160DB3960008BDB1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		9FA2D05E160DB3960008BDB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9FA2D060160DB3960008BDB1 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		9FA2D061160DB3960008BDB1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9FA2D064160DB3960008BDB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		9FA2D06B160DB3960008BDB1 /* SKBindingManagerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKBindingManagerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA2D06C160DB3960008BDB1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9FA2D074160DB3960008BDB1 /* SKBindingManagerTests-Info.plist */ = {isa = PBXFileReference; path = "SKBindingManagerTests-Info.plist"; sourceTree = "<group>"; };
+		9FA2D076160DB3960008BDB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FA2D078160DB3960008BDB1 /* SKBindingManagerTests.h */ = {isa = PBXFileReference; path = SKBindingManagerTests.h; sourceTree = "<group>"; };
+		9FA2D079160DB3960008BDB1 /* SKBindingManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBindingManagerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FA2D047160DB3950008BDB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA2D04F160DB3950008BDB1 /* UIKit.framework in Frameworks */,
+				9FA2D051160DB3950008BDB1 /* Foundation.framework in Frameworks */,
+				9FA2D053160DB3950008BDB1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA2D067160DB3960008BDB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA2D06D160DB3960008BDB1 /* SenTestingKit.framework in Frameworks */,
+				9FA2D06E160DB3960008BDB1 /* UIKit.framework in Frameworks */,
+				9FA2D06F160DB3960008BDB1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9FA2D03F160DB3950008BDB1 = {
+			isa = PBXGroup;
+			children = (
+				9FA2D054160DB3960008BDB1 /* SKBindingManager */,
+				9FA2D072160DB3960008BDB1 /* SKBindingManagerTests */,
+				9FA2D04D160DB3950008BDB1 /* Frameworks */,
+				9FA2D04B160DB3950008BDB1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FA2D04B160DB3950008BDB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FA2D04A160DB3950008BDB1 /* SKBindingManager.app */,
+				9FA2D06B160DB3960008BDB1 /* SKBindingManagerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FA2D04D160DB3950008BDB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FA2D04E160DB3950008BDB1 /* UIKit.framework */,
+				9FA2D050160DB3950008BDB1 /* Foundation.framework */,
+				9FA2D052160DB3950008BDB1 /* CoreGraphics.framework */,
+				9FA2D06C160DB3960008BDB1 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FA2D054160DB3960008BDB1 /* SKBindingManager */ = {
+			isa = PBXGroup;
+			children = (
+				9FA2D05D160DB3960008BDB1 /* AppDelegate.h */,
+				9FA2D05E160DB3960008BDB1 /* AppDelegate.m */,
+				9FA2D060160DB3960008BDB1 /* ViewController.h */,
+				9FA2D061160DB3960008BDB1 /* ViewController.m */,
+				9FA2D063160DB3960008BDB1 /* ViewController.xib */,
+				9FA2D055160DB3960008BDB1 /* Supporting Files */,
+			);
+			path = SKBindingManager;
+			sourceTree = "<group>";
+		};
+		9FA2D055160DB3960008BDB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA2D056160DB3960008BDB1 /* SKBindingManager-Info.plist */,
+				9FA2D057160DB3960008BDB1 /* InfoPlist.strings */,
+				9FA2D05A160DB3960008BDB1 /* main.m */,
+				9FA2D05C160DB3960008BDB1 /* SKBindingManager-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9FA2D072160DB3960008BDB1 /* SKBindingManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				9FA2D078160DB3960008BDB1 /* SKBindingManagerTests.h */,
+				9FA2D079160DB3960008BDB1 /* SKBindingManagerTests.m */,
+				9FA2D073160DB3960008BDB1 /* Supporting Files */,
+			);
+			path = SKBindingManagerTests;
+			sourceTree = "<group>";
+		};
+		9FA2D073160DB3960008BDB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA2D074160DB3960008BDB1 /* SKBindingManagerTests-Info.plist */,
+				9FA2D075160DB3960008BDB1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FA2D049160DB3950008BDB1 /* SKBindingManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA2D07D160DB3960008BDB1 /* Build configuration list for PBXNativeTarget "SKBindingManager" */;
+			buildPhases = (
+				9FA2D046160DB3950008BDB1 /* Sources */,
+				9FA2D047160DB3950008BDB1 /* Frameworks */,
+				9FA2D048160DB3950008BDB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKBindingManager;
+			productName = SKBindingManager;
+			productReference = 9FA2D04A160DB3950008BDB1 /* SKBindingManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9FA2D06A160DB3960008BDB1 /* SKBindingManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA2D080160DB3960008BDB1 /* Build configuration list for PBXNativeTarget "SKBindingManagerTests" */;
+			buildPhases = (
+				9FA2D066160DB3960008BDB1 /* Sources */,
+				9FA2D067160DB3960008BDB1 /* Frameworks */,
+				9FA2D068160DB3960008BDB1 /* Resources */,
+				9FA2D069160DB3960008BDB1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9FA2D071160DB3960008BDB1 /* PBXTargetDependency */,
+			);
+			name = SKBindingManagerTests;
+			productName = SKBindingManagerTests;
+			productReference = 9FA2D06B160DB3960008BDB1 /* SKBindingManagerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FA2D041160DB3950008BDB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "slavko.krucaj@gmail.com";
+			};
+			buildConfigurationList = 9FA2D044160DB3950008BDB1 /* Build configuration list for PBXProject "SKBindingManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9FA2D03F160DB3950008BDB1;
+			productRefGroup = 9FA2D04B160DB3950008BDB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FA2D049160DB3950008BDB1 /* SKBindingManager */,
+				9FA2D06A160DB3960008BDB1 /* SKBindingManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FA2D048160DB3950008BDB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA2D059160DB3960008BDB1 /* InfoPlist.strings in Resources */,
+				9FA2D065160DB3960008BDB1 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA2D068160DB3960008BDB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA2D077160DB3960008BDB1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9FA2D069160DB3960008BDB1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FA2D046160DB3950008BDB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA2D05B160DB3960008BDB1 /* main.m in Sources */,
+				9FA2D05F160DB3960008BDB1 /* AppDelegate.m in Sources */,
+				9FA2D062160DB3960008BDB1 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA2D066160DB3960008BDB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA2D07A160DB3960008BDB1 /* SKBindingManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9FA2D071160DB3960008BDB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FA2D049160DB3950008BDB1 /* SKBindingManager */;
+			targetProxy = 9FA2D070160DB3960008BDB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9FA2D057160DB3960008BDB1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA2D058160DB3960008BDB1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9FA2D063160DB3960008BDB1 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA2D064160DB3960008BDB1 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+		9FA2D075160DB3960008BDB1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA2D076160DB3960008BDB1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FA2D07B160DB3960008BDB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9FA2D07C160DB3960008BDB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9FA2D07E160DB3960008BDB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKBindingManager/SKBindingManager-Prefix.pch";
+				INFOPLIST_FILE = "SKBindingManager/SKBindingManager-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9FA2D07F160DB3960008BDB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKBindingManager/SKBindingManager-Prefix.pch";
+				INFOPLIST_FILE = "SKBindingManager/SKBindingManager-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9FA2D081160DB3960008BDB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SKBindingManager.app/SKBindingManager";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKBindingManager/SKBindingManager-Prefix.pch";
+				INFOPLIST_FILE = "SKBindingManagerTests/SKBindingManagerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9FA2D082160DB3960008BDB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SKBindingManager.app/SKBindingManager";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKBindingManager/SKBindingManager-Prefix.pch";
+				INFOPLIST_FILE = "SKBindingManagerTests/SKBindingManagerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FA2D044160DB3950008BDB1 /* Build configuration list for PBXProject "SKBindingManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA2D07B160DB3960008BDB1 /* Debug */,
+				9FA2D07C160DB3960008BDB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FA2D07D160DB3960008BDB1 /* Build configuration list for PBXNativeTarget "SKBindingManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA2D07E160DB3960008BDB1 /* Debug */,
+				9FA2D07F160DB3960008BDB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9FA2D080160DB3960008BDB1 /* Build configuration list for PBXNativeTarget "SKBindingManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA2D081160DB3960008BDB1 /* Debug */,
+				9FA2D082160DB3960008BDB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FA2D041160DB3950008BDB1 /* Project object */;
+}
