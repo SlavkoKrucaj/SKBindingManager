@@ -44,6 +44,7 @@
 @property (nonatomic, retain) NSString *fromKeyPath;
 @property (nonatomic, retain) NSString *toKeyPath;
 @property (nonatomic, assign) BOOL active;
+@property (nonatomic, copy)   SKTransformationBlock transformation;
 
 @end
 
@@ -54,6 +55,7 @@
 @synthesize toObject;
 @synthesize fromKeyPath;
 @synthesize toKeyPath;
+@synthesize transformation;
 @synthesize active;
 
 - (NSString *)description {
@@ -154,7 +156,15 @@
         [binding.fromObject removeTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
     
     } else if ([binding.fromObject isKindOfClass:[UITextView class]]) {
+    
         [(UITextView *)binding.fromObject setDelegate:nil];
+    
+    } else if ([binding.fromObject isKindOfClass:[UISwitch class]] ||
+               [binding.fromObject isKindOfClass:[UIStepper class]] ||
+               [binding.fromObject isKindOfClass:[UISlider class]]) {
+    
+        [binding.fromObject removeTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventValueChanged];
+        
     }
 }
 
@@ -170,6 +180,12 @@
         
         [(UITextView *)binding.fromObject setDelegate:self];
         
+    } else if ([binding.fromObject isKindOfClass:[UISwitch class]] ||
+               [binding.fromObject isKindOfClass:[UIStepper class]] ||
+               [binding.fromObject isKindOfClass:[UISlider class]]) {
+    
+        [binding.fromObject addTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventValueChanged];
+
     }
 }
 
@@ -178,7 +194,10 @@
     id value = nil;
     if ([sender isKindOfClass:[UITextField class]]) value = [(UITextField *)sender text];
     else if ([sender isKindOfClass:[UILabel class]]) value = [(UILabel *)sender text];
-    
+    else if ([sender isKindOfClass:[UISwitch class]]) value = [NSNumber numberWithBool:[(UISwitch *)sender isOn]];
+    else if ([sender isKindOfClass:[UIStepper class]]) value = [NSNumber numberWithDouble:[(UIStepper *)sender value]];
+    else if ([sender isKindOfClass:[UISlider class]]) value = [NSNumber numberWithDouble:[(UISlider *)sender value]];
+
     for (SKBinding *binding in self.bindings) {
         if (binding.fromObject == sender) {
 
@@ -207,6 +226,8 @@
     binding.fromKeyPath = [bindingOptions objectForKey:kBindingOptionFromKeyPath];
     binding.toKeyPath = [bindingOptions objectForKey:kBindingOptionToKeyPath];
     
+    binding.transformation = [bindingOptions objectForKey:kBindingForwardTransformation];
+    
     binding.active = YES;
     
     BOOL equal = binding.fromObject == binding.toObject && [binding.fromKeyPath isEqualToString:binding.toKeyPath];
@@ -223,6 +244,8 @@
 
         backwardBinding.fromKeyPath = [bindingOptions objectForKey:kBindingOptionToKeyPath];
         backwardBinding.toKeyPath = [bindingOptions objectForKey:kBindingOptionFromKeyPath];
+        
+        backwardBinding.transformation = [bindingOptions objectForKey:kBindingBackwardTransformation];
         
         backwardBinding.active = YES;
         
@@ -268,6 +291,9 @@
     [self deactivateConnection:bindId];
     
     id newValue = [change valueForKey:NSKeyValueChangeNewKey];
+    if (binding.transformation) {
+        newValue = binding.transformation(newValue);
+    }
     [binding.toObject setValue:newValue forKey:binding.toKeyPath];
     
     [self activateConnection:bindId];
