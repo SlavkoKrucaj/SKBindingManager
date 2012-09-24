@@ -79,28 +79,7 @@
 }
 
 - (BOOL)checkForCyclesInGraph {
-//    NSMutableSet *set = [NSMutableSet set];
-//    
-//    for (SKBinding *binding in self.bindings) {
-//        SKVertex *vertex1 = [[SKVertex alloc] init];
-//        vertex1.obj = binding.fromObject;
-//        vertex1.keyPath = binding.fromKeyPath;
-//        
-//        SKVertex *vertex2 = [[SKVertex alloc] init];
-//        vertex2.obj = binding.toObject;
-//        vertex2.keyPath = binding.toKeyPath;
-//        
-//        [set addObject:vertex1];
-//        [set addObject:vertex2];
-//    }
-//    
-//    
-//    for (SKVertex *vertex in set) {
-//        NSMutableSet *visited = [NSMutableSet setWithObject:vertex];
-//        //nadi sve vertexe u koje se moze prijeci
-//    }
-    
-    
+    NSLog(@"Implement finding cycles");
     return NO;
 }
 
@@ -136,10 +115,8 @@
                                     forKeyPath:binding.fromKeyPath 
                                        context:(void*)bindId];
             
-            if ([binding.fromObject isKindOfClass:[UIView class]] && 
-                [binding.fromObject respondsToSelector:@selector(removeTarget:action:forControlEvents:)]) {
-                
-                [binding.fromObject removeTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
+            if ([binding.fromObject isKindOfClass:[UIView class]]) {
+                [self deactivateBindingForUIKit:binding];
             }
             
         }
@@ -159,11 +136,8 @@
                                     options:(NSKeyValueObservingOptionNew) 
                                     context:(void*)bindId];
 
-            if ([binding.fromObject isKindOfClass:[UIView class]] && 
-                [binding.fromObject respondsToSelector:@selector(addTarget:action:forControlEvents:)]) {
-                
-                [binding.fromObject addTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
-            
+            if ([binding.fromObject isKindOfClass:[UIView class]]) {
+                [self setupBindingForUIKitWithBinding:binding];
             }
             
         }
@@ -171,17 +145,32 @@
     }
 }
 
+- (void)deactivateBindingForUIKit:(SKBinding *)binding {
+    
+    if ([binding.fromObject isKindOfClass:[UILabel class]]) return;
+    
+    if ([binding.fromObject isKindOfClass:[UITextField class]]) {
+        
+        [binding.fromObject removeTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
+    
+    } else if ([binding.fromObject isKindOfClass:[UITextView class]]) {
+        [(UITextView *)binding.fromObject setDelegate:nil];
+    }
+}
+
 - (void)setupBindingForUIKitWithBinding:(SKBinding *)binding {
     
-    if (![binding.fromObject respondsToSelector:@selector(addTarget:action:forControlEvents:)])
-        return;
-
-    if ([binding.fromObject isKindOfClass:[UITextField class]] ||
-        [binding.fromObject isKindOfClass:[UITextView class]]) {
+    if ([binding.fromObject isKindOfClass:[UILabel class]]) return;
+    
+    if ([binding.fromObject isKindOfClass:[UITextField class]]) {
         
         [binding.fromObject addTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
-    
-    } 
+        
+    } else if ([binding.fromObject isKindOfClass:[UITextView class]]) {
+        
+        [(UITextView *)binding.fromObject setDelegate:self];
+        
+    }
 }
 
 - (void)changeInUIKitOccurred:(id)sender {
@@ -189,7 +178,6 @@
     id value = nil;
     if ([sender isKindOfClass:[UITextField class]]) value = [(UITextField *)sender text];
     else if ([sender isKindOfClass:[UILabel class]]) value = [(UILabel *)sender text];
-    else if ([sender isKindOfClass:[UITextView class]]) value = [(UITextView *)sender text];
     
     for (SKBinding *binding in self.bindings) {
         if (binding.fromObject == sender) {
@@ -293,18 +281,23 @@
 - (void)removeAllBindings {
     for (SKBinding *binding in self.bindings) {
         if (binding.active) {
-            [binding.fromObject removeObserver:self 
-                                    forKeyPath:binding.fromKeyPath 
-                                       context:(void*)binding.bindId];
-            
-            if ([binding.fromObject isKindOfClass:[UIView class]] && 
-                [binding.fromObject respondsToSelector:@selector(removeTarget:action:forControlEvents:)]) {
-                
-                [binding.fromObject removeTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
-            }
+            [self deactivateConnection:binding.bindId];
         }
     }
     [self.bindings removeAllObjects];
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    id value = textView.text;
+    
+    for (SKBinding *binding in self.bindings) {
+        if (binding.fromObject == textView) {
+            
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
+            [self observeValueForKeyPath:binding.fromKeyPath ofObject:textView change:dict context:(void *)binding.bindId];
+            
+        }
+    }
 }
 
 @end

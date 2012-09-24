@@ -20,7 +20,7 @@
 #define kTextViewObservableProperty     @"text"
 
 
-@interface SKBindingManager : NSObject
+@interface SKBindingManager : NSObject <UITextViewDelegate>
 
 - (BOOL)bind:(NSDictionary *)bindingOptions;
 - (BOOL)unbind:(NSDictionary *)bindingOptions;
