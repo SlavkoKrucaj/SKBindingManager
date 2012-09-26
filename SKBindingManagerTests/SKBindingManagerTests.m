@@ -282,4 +282,8 @@
     STAssertTrueNoThrow([self.textField2.text isEqualToString:self.textField1.text],@"Jednaki su a ne bi trebali biti");
 }
 
+- (void)testCycles {
+
+}
+
 @end

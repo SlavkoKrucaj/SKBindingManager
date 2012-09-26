@@ -36,21 +36,11 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     SKVertex *copy = [[[self class] allocWithZone:zone] init];
-    
-    copy->obj = nil;
-    [copy setObj:[self obj]];
-
-    copy->keyPath = nil;
-    [copy setKeyPath:[self keyPath]];
-    
-    copy->adjacentVertices = nil;
-    [copy setAdjacentVertices:[self adjacentVertices]];
+    copy->obj = nil; [copy setObj:[self obj]];
+    copy->keyPath = nil; [copy setKeyPath:[self keyPath]];
+    copy->adjacentVertices = nil; [copy setAdjacentVertices:[self adjacentVertices]];
 
     return copy;
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"obj = %@, keyPath = %@, adjacent = %@", NSStringFromClass([obj class]),keyPath, adjacentVertices];
 }
 @end
 
@@ -75,10 +65,6 @@
 @synthesize toKeyPath;
 @synthesize transformation;
 @synthesize active;
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"bindId = %@, fromObject = %@, toObject = %@, fromKeyPath = %@, toKeyPath = %@, active = %d\n",bindId, NSStringFromClass([fromObject class]), NSStringFromClass([toObject class]), fromKeyPath, toKeyPath, active];
-}
 
 @end
 
@@ -112,6 +98,7 @@
             NSLog(@"object: %@, keypath: %@",cycleVertex.obj, cycleVertex.keyPath);
             NSLog(@"##################");
             return YES;
+        
         }
         else {
             return NO;
@@ -126,7 +113,11 @@
     }
     
     for (NSNumber *vertexIndex in vertex.adjacentVertices) {
-        BOOL hasCycle = [self checkVertices:unvisited fromVertex:vertexIndex withVisited:[visitedVertices mutableCopy]];
+        
+        BOOL hasCycle = [self checkVertices:unvisited 
+                                 fromVertex:vertexIndex 
+                                withVisited:[visitedVertices mutableCopy]];
+
         if (hasCycle) return YES;
     }
     
