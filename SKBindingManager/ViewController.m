@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SKBindingManager.h"
+#import "DemoModel.h"
 
 @interface ViewController ()
 @property (nonatomic, retain) IBOutlet UITextView *textField1;
@@ -19,60 +20,62 @@
 @property (nonatomic, retain) IBOutlet UIStepper *stepper;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
 
+@property (nonatomic, retain) DemoModel *model;
+
 @property (nonatomic, retain) SKBindingManager *manager;
 
 @end
 
 @implementation ViewController
 
-@synthesize textField1, textField2, manager, label, uiSwitch, stepper, slider;
+@synthesize textField1, textField2, manager, label, uiSwitch, stepper, slider, model;
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.manager = nil;
-    
-//    self.textField1 = [[UITextField alloc] init];
-//    self.textField2 = [[UITextField alloc] init];
+- (void)test {
+    //    self.textField1 = [[UITextField alloc] init];
+    //    self.textField2 = [[UITextField alloc] init];
     self.manager = [[SKBindingManager alloc] init];
+    
+    self.model = [[DemoModel alloc] init];
+    self.model.title = @"Slavko";
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
     
-    [dictionary setObject:self.textField1 forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.label forKey:kBindingOptionToObject];
+    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
+    [dictionary setObject:self.textField2 forKey:kBindingOptionToObject];
     
-    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionFromKeyPath];
+    [dictionary setObject:@"title" forKey:kBindingOptionFromKeyPath];
     [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
     
     [dictionary setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
     
-//    SKTransformationBlock blockOp = ^(id value) { return @"1"; };
-//    [dictionary setObject:blockOp forKey:kBindingForwardTransformation];
+    //    SKTransformationBlock blockOp = ^(id value) { return @"1"; };
+    //    [dictionary setObject:blockOp forKey:kBindingForwardTransformation];
     
     [self.manager bind:dictionary];
     
-//    NSMutableDictionary *dictionary1 = [NSMutableDictionary dictionary];
-//    [dictionary1 setObject:@"name.label" forKey:kBindingOptionBindId];
-//    
-//    [dictionary1 setObject:self.uiSwitch forKey:kBindingOptionFromObject];
-//    [dictionary1 setObject:self.label forKey:kBindingOptionToObject];
-//    
-//    [dictionary1 setObject:kBindingSwitchObservableProperty forKey:kBindingOptionFromKeyPath];
-//    [dictionary1 setObject:kBindingLabelObservableProperty forKey:kBindingOptionToKeyPath];
-//    
-//    SKTransformationBlock blockOp1 = ^(id value) { return [(NSNumber *)value stringValue]; };
-//    [dictionary1 setObject:blockOp1 forKey:kBindingForwardTransformation];
-//    
-//    SKTransformationBlock blockOp2 = ^(id value) {
-//        BOOL val = [(NSString *)value intValue] != 0; 
-//        return [NSNumber numberWithBool:val]; 
-//    };
-//    [dictionary1 setObject:blockOp2 forKey:kBindingBackwardTransformation];
-//        
-//    [dictionary1 setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
-//    
-//    [self.manager bind:dictionary1];
+    
+    //    NSMutableDictionary *dictionary1 = [NSMutableDictionary dictionary];
+    //    [dictionary1 setObject:@"name.label" forKey:kBindingOptionBindId];
+    //    
+    //    [dictionary1 setObject:self.uiSwitch forKey:kBindingOptionFromObject];
+    //    [dictionary1 setObject:self.label forKey:kBindingOptionToObject];
+    //    
+    //    [dictionary1 setObject:kBindingSwitchObservableProperty forKey:kBindingOptionFromKeyPath];
+    //    [dictionary1 setObject:kBindingLabelObservableProperty forKey:kBindingOptionToKeyPath];
+    //    
+    //    SKTransformationBlock blockOp1 = ^(id value) { return [(NSNumber *)value stringValue]; };
+    //    [dictionary1 setObject:blockOp1 forKey:kBindingForwardTransformation];
+    //    
+    //    SKTransformationBlock blockOp2 = ^(id value) {
+    //        BOOL val = [(NSString *)value intValue] != 0; 
+    //        return [NSNumber numberWithBool:val]; 
+    //    };
+    //    [dictionary1 setObject:blockOp2 forKey:kBindingBackwardTransformation];
+    //        
+    //    [dictionary1 setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
+    //    
+    //    [self.manager bind:dictionary1];
     
     NSMutableDictionary *dictionary1 = [NSMutableDictionary dictionary];
     [dictionary1 setObject:@"name.label" forKey:kBindingOptionBindId];
@@ -83,9 +86,9 @@
     [dictionary1 setObject:kBindingStepperObservableProperty forKey:kBindingOptionFromKeyPath];
     [dictionary1 setObject:kBindingSliderObservableProperty forKey:kBindingOptionToKeyPath];
     
-//    SKTransformationBlock blockOp1 = ^(id value) { return [(NSNumber *)value stringValue]; };
-//    [dictionary1 setObject:blockOp1 forKey:kBindingForwardTransformation];
-        
+    //    SKTransformationBlock blockOp1 = ^(id value) { return [(NSNumber *)value stringValue]; };
+    //    [dictionary1 setObject:blockOp1 forKey:kBindingForwardTransformation];
+    
     [dictionary1 setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
     
     [self.manager bind:dictionary1];
@@ -105,6 +108,59 @@
     [dictionary2 setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
     
     [self.manager bind:dictionary2];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.manager = nil;
+    
+//    [self test];
+    
+    self.model = [[DemoModel alloc] init];
+    
+    self.manager = [[SKBindingManager alloc] init];
+    
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    
+    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
+    [dictionary setObject:self.model forKey:kBindingOptionToObject];
+    
+    [dictionary setObject:@"a" forKey:kBindingOptionFromKeyPath];
+    [dictionary setObject:@"b" forKey:kBindingOptionToKeyPath];
+    
+    [dictionary setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
+
+    [self.manager bind:dictionary];
+    
+    dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:@"name.textFieldText1" forKey:kBindingOptionBindId];
+    
+    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
+    [dictionary setObject:self.model forKey:kBindingOptionToObject];
+    
+    [dictionary setObject:@"b" forKey:kBindingOptionFromKeyPath];
+    [dictionary setObject:@"c" forKey:kBindingOptionToKeyPath];
+    
+    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:kBindingOptionTwoWayBinding];
+    
+    [self.manager bind:dictionary];
+    
+    dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:@"name.textFieldText2" forKey:kBindingOptionBindId];
+    
+    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
+    [dictionary setObject:self.model forKey:kBindingOptionToObject];
+    
+    [dictionary setObject:@"c" forKey:kBindingOptionFromKeyPath];
+    [dictionary setObject:@"a" forKey:kBindingOptionToKeyPath];
+    
+    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:kBindingOptionTwoWayBinding];
+    
+    [self.manager bind:dictionary];
+    
+//    [self.manager performSelector:@selector(checkForCyclesInGraph)];
 }
 
 - (void)viewDidUnload

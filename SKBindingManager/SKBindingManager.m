@@ -11,11 +11,13 @@
 @interface SKVertex : NSObject
 @property (nonatomic, assign) id obj;
 @property (nonatomic, assign) NSString *keyPath;
+@property (nonatomic, assign) NSMutableArray *adjacentVertices;
 @end
 
 @implementation SKVertex : NSObject
 @synthesize obj;
 @synthesize keyPath;
+@synthesize adjacentVertices;
 
 - (BOOL)isEqual:(id)object {
     if (![object isKindOfClass:[SKVertex class]]) return NO;
@@ -31,8 +33,24 @@
     return hash;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    SKVertex *copy = [[[self class] allocWithZone:zone] init];
+    
+    copy->obj = nil;
+    [copy setObj:[self obj]];
+
+    copy->keyPath = nil;
+    [copy setKeyPath:[self keyPath]];
+    
+    copy->adjacentVertices = nil;
+    [copy setAdjacentVertices:[self adjacentVertices]];
+
+    return copy;
+}
+
 - (NSString *)description {
-    return [NSString stringWithFormat:@"obj = %@, keyPath = %@", NSStringFromClass([obj class]),keyPath];
+    return [NSString stringWithFormat:@"obj = %@, keyPath = %@, adjacent = %@", NSStringFromClass([obj class]),keyPath, adjacentVertices];
 }
 @end
 
@@ -80,8 +98,69 @@
     return self;
 }
 
+-(BOOL)checkVertices:(NSMutableArray *)unvisited fromVertex:(NSNumber *)indexOfVertex withVisited:(NSMutableArray *)visitedVertices {
+    
+    if ([visitedVertices containsObject:indexOfVertex]) {
+        if ([visitedVertices indexOfObject:indexOfVertex] < visitedVertices.count - 2) {
+            NSLog(@"Cycle detected -> ");
+            for (NSNumber *cycleIndex in visitedVertices) {
+                SKVertex *cycleVertex = [unvisited objectAtIndex:cycleIndex.intValue];
+                NSLog(@"object: %@, keypath: %@",cycleVertex.obj, cycleVertex.keyPath);
+            }
+            SKVertex *cycleVertex = [unvisited objectAtIndex:indexOfVertex.intValue];
+            NSLog(@"object: %@, keypath: %@",cycleVertex.obj, cycleVertex.keyPath);
+            NSLog(@"##################");
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    
+    [visitedVertices addObject:indexOfVertex];
+    SKVertex *vertex = [unvisited objectAtIndex:indexOfVertex.intValue];
+
+    if (vertex.adjacentVertices.count == 0) {
+        return NO;
+    }
+    
+    for (NSNumber *vertexIndex in vertex.adjacentVertices) {
+        BOOL hasCycle = [self checkVertices:unvisited fromVertex:vertexIndex withVisited:[visitedVertices mutableCopy]];
+        if (hasCycle) return YES;
+    }
+    
+    return NO;
+    
+}
+
 - (BOOL)checkForCyclesInGraph {
-    NSLog(@"Implement finding cycles");
+    
+    NSMutableArray *vertices = [NSMutableArray array];
+    
+    for (SKBinding *binding in self.bindings) {
+        SKVertex *vertex1 = [[SKVertex alloc] init];
+        vertex1.obj = binding.fromObject;
+        vertex1.keyPath = binding.fromKeyPath;
+        vertex1.adjacentVertices = [NSMutableArray array];
+        
+        SKVertex *vertex2 = [[SKVertex alloc] init];
+        vertex2.obj = binding.toObject;
+        vertex2.keyPath = binding.toKeyPath;
+        vertex2.adjacentVertices = [NSMutableArray array];
+        
+        if (![vertices containsObject:vertex1]) [vertices addObject:vertex1];
+        if (![vertices containsObject:vertex2]) [vertices addObject:vertex2];
+        
+        vertex1 = [vertices objectAtIndex:[vertices indexOfObject:vertex1]];
+        [vertex1.adjacentVertices addObject:[NSNumber numberWithInt:[vertices indexOfObject:vertex2]]];
+    }
+
+    
+    for (int i=0;i<vertices.count;i++) {
+        BOOL hasCycle = [self checkVertices:[vertices mutableCopy] fromVertex:[NSNumber numberWithInt:i] withVisited:[NSMutableArray array]];
+        if (hasCycle) return YES;
+    }
+
     return NO;
 }
 
@@ -275,8 +354,27 @@
         }
     }
     
-    //observe za from - za initial stanje
-    //observe za to - za initial stanje
+    if (twoWayBinding && 
+               [binding.fromObject isKindOfClass:[UIView class]] && 
+               ![binding.toObject isKindOfClass:[UIView class]]) {
+        
+        id value = [binding.toObject valueForKeyPath:binding.toKeyPath];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
+        [self observeValueForKeyPath:binding.toKeyPath ofObject:binding.toObject change:dict context:(void *)binding.bindId];
+        
+    } else if (twoWayBinding && 
+               ![binding.fromObject isKindOfClass:[UIView class]] && 
+               [binding.toObject isKindOfClass:[UIView class]]) {
+        
+        id value = [binding.fromObject valueForKeyPath:binding.fromKeyPath];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
+        [self observeValueForKeyPath:binding.fromKeyPath ofObject:binding.fromObject change:dict context:(void *)binding.bindId];
+        
+    } else {
+        id value = [binding.fromObject valueForKeyPath:binding.fromKeyPath];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
+        [self observeValueForKeyPath:binding.fromKeyPath ofObject:binding.fromObject change:dict context:(void *)binding.bindId];
+    }
     
     return YES;
 }

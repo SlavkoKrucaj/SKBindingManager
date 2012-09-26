@@ -86,7 +86,7 @@
     [dictionary setObject:self.textField1 forKey:kBindingOptionToObject];
     
     [dictionary setObject:@"title" forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kTextFieldObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
     
     [dictionary setObject:[NSNumber numberWithBool:NO] forKey:kBindingOptionTwoWayBinding];
     
@@ -109,7 +109,7 @@
     [dictionary setObject:self.textField1 forKey:kBindingOptionToObject];
     
     [dictionary setObject:@"title" forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kTextFieldObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
     
     [dictionary setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
     
@@ -130,8 +130,8 @@
     [dictionary setObject:self.textField1 forKey:kBindingOptionFromObject];
     [dictionary setObject:self.textField2 forKey:kBindingOptionToObject];
     
-    [dictionary setObject:kTextFieldObservableProperty forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kTextFieldObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionFromKeyPath];
+    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
     
     [dictionary setObject:[NSNumber numberWithBool:NO] forKey:kBindingOptionTwoWayBinding];
     
@@ -152,8 +152,8 @@
     [dictionary setObject:self.textField1 forKey:kBindingOptionFromObject];
     [dictionary setObject:self.textField2 forKey:kBindingOptionToObject];
     
-    [dictionary setObject:kTextFieldObservableProperty forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kTextFieldObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionFromKeyPath];
+    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
     
     [dictionary setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
 

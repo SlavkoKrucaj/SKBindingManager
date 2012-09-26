@@ -11,5 +11,5 @@
 @implementation DemoModel
 
 @synthesize title,text;
-
+@synthesize a,b,c;
 @end

@@ -13,4 +13,8 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *text;
 
+@property (nonatomic, retain) NSString *a;
+@property (nonatomic, retain) NSString *b;
+@property (nonatomic, retain) NSString *c;
+
 @end
