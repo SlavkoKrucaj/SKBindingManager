@@ -306,7 +306,7 @@
     binding.fromKeyPath = [bindingOptions objectForKey:kBindingOptionFromKeyPath];
     binding.toKeyPath = [bindingOptions objectForKey:kBindingOptionToKeyPath];
     
-    binding.transformation = [bindingOptions objectForKey:kBindingForwardTransformation];
+    binding.transformation = [bindingOptions objectForKey:kBindingOptionForwardTransformation];
     
     binding.active = YES;
     
@@ -325,7 +325,7 @@
         backwardBinding.fromKeyPath = [bindingOptions objectForKey:kBindingOptionToKeyPath];
         backwardBinding.toKeyPath = [bindingOptions objectForKey:kBindingOptionFromKeyPath];
         
-        backwardBinding.transformation = [bindingOptions objectForKey:kBindingBackwardTransformation];
+        backwardBinding.transformation = [bindingOptions objectForKey:kBindingOptionBackwardTransformation];
         
         backwardBinding.active = YES;
         
