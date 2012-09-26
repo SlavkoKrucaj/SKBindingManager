@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-#define kBindingOptionFromObject        @"fromObject"
-#define kBindingOptionToObject          @"toObject"
-#define kBindingOptionFromKeyPath       @"fromKeyPath"
-#define kBindingOptionToKeyPath         @"toKeyPath"
-#define kBindingOptionBindId            @"bindId"
-#define kBindingOptionTwoWayBinding     @"twoWay"
-#define kBindingForwardTransformation   @"forwardTransformation"
-#define kBindingBackwardTransformation  @"backwardTransformation"
+#define kBindingOptionFromObject                @"fromObject"
+#define kBindingOptionToObject                  @"toObject"
+#define kBindingOptionFromKeyPath               @"fromKeyPath"
+#define kBindingOptionToKeyPath                 @"toKeyPath"
+#define kBindingOptionBindId                    @"bindId"
+#define kBindingOptionTwoWayBinding             @"twoWay"
+#define kBindingOptionForwardTransformation     @"forwardTransformation"
+#define kBindingOptionBackwardTransformation    @"backwardTransformation"
 
 #define kBindingLabelObservableProperty        @"text"
 #define kBidningTextFieldObservableProperty    @"text"
@@ -26,7 +26,14 @@
 
 typedef id (^SKTransformationBlock)(id value);
 
+@protocol SKBindingProtocol <NSObject>
+@optional
+- (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath;
+@end
+
 @interface SKBindingManager : NSObject <UITextViewDelegate>
+
+@property (nonatomic, assign) id<SKBindingProtocol> delegate;
 
 - (BOOL)bind:(NSDictionary *)bindingOptions;
 - (BOOL)unbind:(NSDictionary *)bindingOptions;

@@ -89,6 +89,7 @@
 @implementation SKBindingManager
 
 @synthesize bindings;
+@synthesize delegate;
 
 - (id)init {
     self = [super init];
@@ -338,8 +339,11 @@
                                options:(NSKeyValueObservingOptionNew)
                                context:(void *)binding.bindId];
     
-    if ([binding.fromObject isKindOfClass:[UIView class]]) {
+    if ([binding.fromObject isKindOfClass:[UIView class]] &&
+        ![binding.fromObject conformsToProtocol:@protocol(SKBindingProtocol)]) {
+        
         [self setupBindingForUIKitWithBinding:binding];
+    
     }
 
     if (twoWayBinding) {
@@ -349,8 +353,11 @@
                                 options:(NSKeyValueObservingOptionNew)
                                 context:(void *)binding.bindId];
 
-        if ([backwardBinding.fromObject isKindOfClass:[UIView class]]) {
+        if ([backwardBinding.fromObject isKindOfClass:[UIView class]] &&
+            ![backwardBinding.fromObject conformsToProtocol:@protocol(SKBindingProtocol)]) {
+            
             [self setupBindingForUIKitWithBinding:backwardBinding];
+        
         }
     }
     
@@ -395,6 +402,10 @@
     [binding.toObject setValue:newValue forKey:binding.toKeyPath];
     
     [self activateConnection:bindId];
+    
+    if ([self.delegate respondsToSelector:@selector(bindedObject:changedKeyPath:)]) {
+        [self.delegate bindedObject:binding.toObject changedKeyPath:binding.toKeyPath];
+    }
     
 }
 
