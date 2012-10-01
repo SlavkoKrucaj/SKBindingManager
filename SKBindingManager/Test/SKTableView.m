@@ -59,4 +59,5 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.observableProperty = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
 }
+
 @end

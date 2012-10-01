@@ -31,7 +31,7 @@ typedef id (^SKTransformationBlock)(id value);
 - (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath;
 @end
 
-@interface SKBindingManager : NSObject <UITextViewDelegate>
+@interface SKBindingManager : NSObject
 
 @property (nonatomic, assign) id<SKBindingProtocol> delegate;
 

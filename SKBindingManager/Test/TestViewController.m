@@ -51,6 +51,7 @@
     [super viewDidLoad];
     
     [self.tableView initialize];
+
     self.manager = [[SKBindingManager alloc] init];
     self.manager.delegate = self;
     
@@ -107,7 +108,7 @@
     [dictionary2 setObject:self.textField forKey:kBindingOptionToObject];
     [dictionary2 setObject:kBindingTextViewObservableProperty forKey:kBindingOptionFromKeyPath];
     [dictionary2 setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
-    [dictionary2 setObject:blockOp3 forKey:kBindingOptionForwardTransformation];
+//    [dictionary2 setObject:blockOp3 forKey:kBindingOptionForwardTransformation];
     [dictionary2 setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
     [self.manager bind:dictionary2];
     

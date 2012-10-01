@@ -227,9 +227,9 @@
         [binding.fromObject removeTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
     
     } else if ([binding.fromObject isKindOfClass:[UITextView class]]) {
-    
-        [(UITextView *)binding.fromObject setDelegate:nil];
-    
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:binding.fromObject];
+        
     } else if ([binding.fromObject isKindOfClass:[UISwitch class]] ||
                [binding.fromObject isKindOfClass:[UIStepper class]] ||
                [binding.fromObject isKindOfClass:[UISlider class]]) {
@@ -248,8 +248,8 @@
         [binding.fromObject addTarget:self action:@selector(changeInUIKitOccurred:) forControlEvents:UIControlEventEditingChanged];
         
     } else if ([binding.fromObject isKindOfClass:[UITextView class]]) {
-        
-        [(UITextView *)binding.fromObject setDelegate:self];
+    
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:binding.fromObject];
         
     } else if ([binding.fromObject isKindOfClass:[UISwitch class]] ||
                [binding.fromObject isKindOfClass:[UIStepper class]] ||
@@ -330,6 +330,7 @@
                                options:(NSKeyValueObservingOptionNew)
                                context:(void *)binding.bindId];
     
+    
     if ([binding.fromObject isKindOfClass:[UIView class]] &&
         ![binding.fromObject conformsToProtocol:@protocol(SKBindingProtocol)]) {
         
@@ -359,14 +360,6 @@
         id value = [binding.toObject valueForKeyPath:binding.toKeyPath];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
         [self observeValueForKeyPath:binding.toKeyPath ofObject:binding.toObject change:dict context:(void *)binding.bindId];
-        
-    } else if (twoWayBinding && 
-               ![binding.fromObject isKindOfClass:[UIView class]] && 
-               [binding.toObject isKindOfClass:[UIView class]]) {
-        
-        id value = [binding.fromObject valueForKeyPath:binding.fromKeyPath];
-        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
-        [self observeValueForKeyPath:binding.fromKeyPath ofObject:binding.fromObject change:dict context:(void *)binding.bindId];
         
     } else {
         id value = [binding.fromObject valueForKeyPath:binding.fromKeyPath];
@@ -413,7 +406,8 @@
     [self.bindings removeAllObjects];
 }
 
-- (void)textViewDidChange:(UITextView *)textView {
+- (void)textViewDidChange:(NSNotification *)notification {
+    UITextView *textView = (UITextView *)notification.object;
     id value = textView.text;
     
     for (SKBinding *binding in self.bindings) {

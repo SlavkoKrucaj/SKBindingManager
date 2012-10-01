@@ -56,8 +56,8 @@
 		9FA2D086160DB3B30008BDB1 /* SKBindingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBindingManager.m; sourceTree = "<group>"; };
 		9FBBD0441613A8590027AF99 /* DemoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModel.h; sourceTree = "<group>"; };
 		9FBBD0451613A8590027AF99 /* DemoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModel.m; sourceTree = "<group>"; };
-		9FBBD0461613A8590027AF99 /* SKTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTableView.h; sourceTree = "<group>"; };
-		9FBBD0471613A8590027AF99 /* SKTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTableView.m; sourceTree = "<group>"; };
+		9FBBD0461613A8590027AF99 /* SKTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKTableView.h; path = ../Test/SKTableView.h; sourceTree = "<group>"; };
+		9FBBD0471613A8590027AF99 /* SKTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKTableView.m; path = ../Test/SKTableView.m; sourceTree = "<group>"; };
 		9FBBD04F1613A86D0027AF99 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		9FBBD0501613A86D0027AF99 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		9FBBD0511613A86D0027AF99 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
@@ -87,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F6097BC16175A1700603F33 /* BindableViews */ = {
+			isa = PBXGroup;
+			children = (
+				9FBBD0461613A8590027AF99 /* SKTableView.h */,
+				9FBBD0471613A8590027AF99 /* SKTableView.m */,
+			);
+			path = BindableViews;
+			sourceTree = "<group>";
+		};
 		9FA2D03F160DB3950008BDB1 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +129,7 @@
 		9FA2D054160DB3960008BDB1 /* SKBindingManager */ = {
 			isa = PBXGroup;
 			children = (
+				9F6097BC16175A1700603F33 /* BindableViews */,
 				9FBBD0431613A8590027AF99 /* Test */,
 				9FA2D085160DB3B30008BDB1 /* SKBindingManager.h */,
 				9FA2D086160DB3B30008BDB1 /* SKBindingManager.m */,
@@ -165,8 +175,6 @@
 			children = (
 				9FBBD0441613A8590027AF99 /* DemoModel.h */,
 				9FBBD0451613A8590027AF99 /* DemoModel.m */,
-				9FBBD0461613A8590027AF99 /* SKTableView.h */,
-				9FBBD0471613A8590027AF99 /* SKTableView.m */,
 				9FBBD04F1613A86D0027AF99 /* TestViewController.h */,
 				9FBBD0501613A86D0027AF99 /* TestViewController.m */,
 				9FBBD0511613A86D0027AF99 /* TestViewController.xib */,
@@ -379,6 +387,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SKBindingManager/SKBindingManager-Prefix.pch";
 				INFOPLIST_FILE = "SKBindingManager/SKBindingManager-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -390,6 +399,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SKBindingManager/SKBindingManager-Prefix.pch";
 				INFOPLIST_FILE = "SKBindingManager/SKBindingManager-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
