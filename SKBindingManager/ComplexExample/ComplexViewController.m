@@ -6,13 +6,13 @@
 //  Copyright (c) 2012. slavko.krucaj@gmail.com. All rights reserved.
 //
 
-#import "TestViewController.h"
+#import "ComplexViewController.h"
 #import "SKTableView.h"
 #import "SKPickerView.h"
 
 #import "SKBindingManager.h"
 
-@interface TestViewController ()
+@interface ComplexViewController ()
 @property (nonatomic, retain) IBOutlet UILabel *label;
 @property (nonatomic, retain) IBOutlet UIStepper *stepper;
 @property (nonatomic, retain) IBOutlet UISwitch *switchControl;
@@ -26,7 +26,7 @@
 @property (nonatomic, retain) SKBindingManager *manager;
 @end
 
-@implementation TestViewController
+@implementation ComplexViewController
 
 @synthesize label;
 @synthesize stepper;
@@ -196,6 +196,16 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+
+    self.label = nil;
+    self.stepper = nil;
+    self.switchControl = nil;
+    self.tableView = nil;
+    self.textField = nil;
+    self.boolTextField = nil;
+    self.textView = nil;
+    self.pickerView = nil;
+    self.slider = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -208,4 +218,21 @@
 - (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath {
     NSLog(@"Promijenio sam objekt %@.%@",[object class], keyPath);
 }
+
+#pragma mark - delegates
+
+- (BOOL)textFieldShouldReturn:(UITextField *)_textField {
+    [_textField resignFirstResponder];
+    return NO;
+}
+
+- (BOOL)textView:(UITextView *)_textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqual:@"\n"]) {
+        [_textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+
 @end

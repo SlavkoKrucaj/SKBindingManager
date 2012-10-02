@@ -1,5 +1,5 @@
 //
-//  SKTableView.h
+//  TestViewController.h
 //  SKBindingManager
 //
 //  Created by Slavko Krucaj on 26.9.2012..
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKBindingManager.h"
 
-@interface SKTableView : UITableView
+@interface ComplexViewController : UIViewController <SKBindingProtocol, UITextFieldDelegate, UITableViewDelegate>
 
 @end
