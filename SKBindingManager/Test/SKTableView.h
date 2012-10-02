@@ -11,6 +11,4 @@
 
 @interface SKTableView : UITableView <UITableViewDelegate, UITableViewDataSource, SKBindingProtocol>
 
-- (void)initialize;
-
 @end

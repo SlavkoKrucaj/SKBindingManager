@@ -381,7 +381,7 @@
     
     id newValue = [change valueForKey:NSKeyValueChangeNewKey];
     if (binding.transformation) {
-        newValue = binding.transformation(newValue);
+        newValue = binding.transformation(newValue, binding.toObject);
     }
     [binding.toObject setValue:newValue forKey:binding.toKeyPath];
     

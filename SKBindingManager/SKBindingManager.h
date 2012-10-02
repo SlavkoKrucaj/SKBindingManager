@@ -24,7 +24,7 @@
 #define kBindingStepperObservableProperty      @"value"
 #define kBindingSliderObservableProperty       @"value"
 
-typedef id (^SKTransformationBlock)(id value);
+typedef id (^SKTransformationBlock)(id value, id onObject);
 
 @protocol SKBindingProtocol <NSObject>
 @optional

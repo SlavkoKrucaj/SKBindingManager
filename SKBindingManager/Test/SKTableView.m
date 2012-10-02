@@ -9,7 +9,7 @@
 #import "SKTableView.h"
 
 @interface SKTableView()
-@property (nonatomic, retain) NSString *observableProperty;
+@property (nonatomic, retain) NSIndexPath *observableProperty;
 @end
 
 @implementation SKTableView
@@ -20,7 +20,23 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self initialize];
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+    self = [super initWithFrame:frame style:style];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initialize];
     }
     return self;
 }
@@ -57,7 +73,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.observableProperty = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    self.observableProperty = indexPath;
 }
 
 @end

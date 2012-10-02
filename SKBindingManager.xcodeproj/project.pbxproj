@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F4C9C05161A335100856FD2 /* SKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C9C04161A335100856FD2 /* SKPickerView.m */; };
 		9FA2D04F160DB3950008BDB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D04E160DB3950008BDB1 /* UIKit.framework */; };
 		9FA2D051160DB3950008BDB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D050160DB3950008BDB1 /* Foundation.framework */; };
 		9FA2D053160DB3950008BDB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2D052160DB3950008BDB1 /* CoreGraphics.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F4C9C03161A335100856FD2 /* SKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPickerView.h; sourceTree = "<group>"; };
+		9F4C9C04161A335100856FD2 /* SKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPickerView.m; sourceTree = "<group>"; };
 		9FA2D04A160DB3950008BDB1 /* SKBindingManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKBindingManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA2D04E160DB3950008BDB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9FA2D050160DB3950008BDB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +95,8 @@
 			children = (
 				9FBBD0461613A8590027AF99 /* SKTableView.h */,
 				9FBBD0471613A8590027AF99 /* SKTableView.m */,
+				9F4C9C03161A335100856FD2 /* SKPickerView.h */,
+				9F4C9C04161A335100856FD2 /* SKPickerView.m */,
 			);
 			path = BindableViews;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				9FBBD04B1613A8590027AF99 /* DemoModel.m in Sources */,
 				9FBBD04C1613A8590027AF99 /* SKTableView.m in Sources */,
 				9FBBD0521613A86D0027AF99 /* TestViewController.m in Sources */,
+				9F4C9C05161A335100856FD2 /* SKPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
