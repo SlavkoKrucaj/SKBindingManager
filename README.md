@@ -20,31 +20,31 @@ To use SKBindingManager just drag and drop `SKBindingManager.h` and `SKBindingMa
 
 Usually (most cases) you will make a property on your `UIViewController`, but if you need to you can define it in any subclass of `NSObject`. So create instance like this:
 ```objective-c
-	self.bindingManager = [[SKBindingManager alloc] init];
+self.bindingManager = [[SKBindingManager alloc] init];
 ```
 Now you have binding manager which will take care of all bindings you add to it. So lets bind `UITextView` to property `name` of some random `Person` model. You would do it like this.
 ```objective-c
-	self.person = [[Person alloc] init];
-    
-    //create binding options dictionary which contains all properties needed for binding
-    NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
+self.person = [[Person alloc] init];
 
-	//set binding id for this connection
-    [bindingOptions setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
-    
-    //set object and propety - from 
-    [bindingOptions setObject:self.person forKey:kBindingOptionFromObject];
-    [bindingOptions setObject:@"name" forKey:kBindingOptionFromKeyPath];
-    
-    //set object and property - to
-    [bindingOptions setObject:self.textField forKey:kBindingOptionToObject];
-    [bindingOptions setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
-    
-    //specify if you want two-way or one-way binding
-    [bindingOptions setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
-    
-    //add binding
-    [self.bindingManager bind:bindingOptions];
+//create binding options dictionary which contains all properties needed for binding
+NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
+
+//set binding id for this connection
+[bindingOptions setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+
+//set object and propety - from 
+[bindingOptions setObject:self.person forKey:kBindingOptionFromObject];
+[bindingOptions setObject:@"name" forKey:kBindingOptionFromKeyPath];
+
+//set object and property - to
+[bindingOptions setObject:self.textField forKey:kBindingOptionToObject];
+[bindingOptions setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
+
+//specify if you want two-way or one-way binding
+[bindingOptions setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
+
+//add binding
+[self.bindingManager bind:bindingOptions];
 ```
  
 Afer this, your textField is binded to name property of Person. Whenever you change one of those two the other will update.
@@ -53,27 +53,27 @@ Afer this, your textField is binded to name property of Person. Whenever you cha
 
 Let say that whenever you type name into textField you want to add string `@"12345"` to the end of the name. To do this you would just need to add option to your dictionary like this
 ```objective-c
-	SKTransformationBlock transformation = ^(id value, id toObject) { 
-        NSString *name = (NSString *)value;
-        return [name stringByAppendingString:@"12345"];
-    };
-    
-    //set transformation as backward because it goes from 'to object' to 'from object'
-    [bindingOptions setObject:transformation forKey:kBindingOptionBackwardTransformation];
+SKTransformationBlock transformation = ^(id value, id toObject) { 
+	NSString *name = (NSString *)value;
+	return [name stringByAppendingString:@"12345"];
+};
+
+//set transformation as backward because it goes from 'to object' to 'from object'
+[bindingOptions setObject:transformation forKey:kBindingOptionBackwardTransformation];
 ```
 ###Delegation
 
 If you want to be notified when some object has been changed you just have to implement protocol `SKBindingProtocol` and whenever the change on some object occurs `- (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath;` will be called. First you set yourself to be a delegate `self.bindingManager.delegate = self` and then you implement method something like this
 ```objective-c
-	- (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath {
-    	if ([object isEqual:self.textField]) {
-    		NSLog(@"Text field has been changed");
-    	} else {
-    		NSLog(@"Persons name has been changed");
-    	}
-    	
-    	NSLog(@"TextField.text = %@ and Person.name = %@", self.textField.text, self.person.name);
-	}
+- (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath {
+   	if ([object isEqual:self.textField]) {
+   		NSLog(@"Text field has been changed");
+   	} else {
+   		NSLog(@"Persons name has been changed");
+   	}
+   	
+   	NSLog(@"TextField.text = %@ and Person.name = %@", self.textField.text, self.person.name);
+}
 ```
 ###Custom objects
 
