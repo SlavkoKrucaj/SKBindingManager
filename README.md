@@ -19,11 +19,11 @@ When you clone project and open it in XCode, you have folder `SimpleExample` whi
 To use SKBindingManager just drag and drop `SKBindingManager.h` and `SKBindingManager.m` to your project.
 
 Usually (most cases) you will make a property on your `UIViewController`, but if you need to you can define it in any subclass of `NSObject`. So create instance like this:
-
+```objective-c
 	self.bindingManager = [[SKBindingManager alloc] init];
-
+```
 Now you have binding manager which will take care of all bindings you add to it. So lets bind `UITextView` to property `name` of some random `Person` model. You would do it like this.
-
+```objective-c
 	self.person = [[Person alloc] init];
     
     //create binding options dictionary which contains all properties needed for binding
@@ -45,14 +45,14 @@ Now you have binding manager which will take care of all bindings you add to it.
     
     //add binding
     [self.bindingManager bind:bindingOptions];
-
+```
  
 Afer this, your textField is binded to name property of Person. Whenever you change one of those two the other will update.
 
 ###Transformations
 
 Let say that whenever you type name into textField you want to add string `@"12345"` to the end of the name. To do this you would just need to add option to your dictionary like this
-
+```objective-c
 	SKTransformationBlock transformation = ^(id value, id toObject) { 
         NSString *name = (NSString *)value;
         return [name stringByAppendingString:@"12345"];
@@ -60,11 +60,11 @@ Let say that whenever you type name into textField you want to add string `@"123
     
     //set transformation as backward because it goes from 'to object' to 'from object'
     [bindingOptions setObject:transformation forKey:kBindingOptionBackwardTransformation];
-
+```
 ###Delegation
 
 If you want to be notified when some object has been changed you just have to implement protocol `SKBindingProtocol` and whenever the change on some object occurs `- (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath;` will be called. First you set yourself to be a delegate `self.bindingManager.delegate = self` and then you implement method something like this
-
+```objective-c
 	- (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath {
     	if ([object isEqual:self.textField]) {
     		NSLog(@"Text field has been changed");
@@ -74,7 +74,7 @@ If you want to be notified when some object has been changed you just have to im
     	
     	NSLog(@"TextField.text = %@ and Person.name = %@", self.textField.text, self.person.name);
 	}
-
+```
 ###Custom objects
 
 If you want to add binding support to your custom `UIView` object you have to do few steps. Your custom object has to implement `SKBindingProtocol` and it has to have some observable property. From your custom object you would have to update observableProperty when some custom change occurs. When you do that you can just bind that observableProperty to something else. 
