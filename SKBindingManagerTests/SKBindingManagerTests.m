@@ -34,15 +34,15 @@
     self.manager = [[SKBindingManager alloc] init];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    [dictionary setObject:@"name.textFieldText" forKey:BindingId];
     
-    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.model forKey:kBindingOptionToObject];
+    [dictionary setObject:self.model forKey:BindingFrom];
+    [dictionary setObject:self.model forKey:BindingTo];
     
-    [dictionary setObject:@"title" forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:@"text" forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:@"title" forKey:BindingFromKeyPath];
+    [dictionary setObject:@"text" forKey:BindingToKeyPath];
     
-    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:kBindingOptionTwoWayBinding];
+    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary];
 }
@@ -57,15 +57,15 @@
     self.manager = [[SKBindingManager alloc] init];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    [dictionary setObject:@"name.textFieldText" forKey:BindingId];
     
-    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.model forKey:kBindingOptionToObject];
+    [dictionary setObject:self.model forKey:BindingFrom];
+    [dictionary setObject:self.model forKey:BindingTo];
     
-    [dictionary setObject:@"title" forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:@"text" forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:@"title" forKey:BindingFromKeyPath];
+    [dictionary setObject:@"text" forKey:BindingToKeyPath];
     
-    [dictionary setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
+    [dictionary setObject:[NSNumber numberWithBool:YES] forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary];
 }
@@ -80,15 +80,15 @@
     self.manager = [[SKBindingManager alloc] init];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    [dictionary setObject:@"name.textFieldText" forKey:BindingId];
     
-    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.textField1 forKey:kBindingOptionToObject];
+    [dictionary setObject:self.model forKey:BindingFrom];
+    [dictionary setObject:self.textField1 forKey:BindingTo];
     
-    [dictionary setObject:@"title" forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:@"title" forKey:BindingFromKeyPath];
+    [dictionary setObject:BindingPropertyTextView forKey:BindingToKeyPath];
     
-    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:kBindingOptionTwoWayBinding];
+    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary];
 }
@@ -103,15 +103,15 @@
     self.manager = [[SKBindingManager alloc] init];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    [dictionary setObject:@"name.textFieldText" forKey:BindingId];
     
-    [dictionary setObject:self.model forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.textField1 forKey:kBindingOptionToObject];
+    [dictionary setObject:self.model forKey:BindingFrom];
+    [dictionary setObject:self.textField1 forKey:BindingTo];
     
-    [dictionary setObject:@"title" forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:@"title" forKey:BindingFromKeyPath];
+    [dictionary setObject:BindingPropertyTextView forKey:BindingToKeyPath];
     
-    [dictionary setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
+    [dictionary setObject:[NSNumber numberWithBool:YES] forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary];
 }
@@ -125,15 +125,15 @@
     self.manager = [[SKBindingManager alloc] init];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    [dictionary setObject:@"name.textFieldText" forKey:BindingId];
     
-    [dictionary setObject:self.textField1 forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.textField2 forKey:kBindingOptionToObject];
+    [dictionary setObject:self.textField1 forKey:BindingFrom];
+    [dictionary setObject:self.textField2 forKey:BindingTo];
     
-    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:BindingPropertyTextView forKey:BindingFromKeyPath];
+    [dictionary setObject:BindingPropertyTextView forKey:BindingToKeyPath];
     
-    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:kBindingOptionTwoWayBinding];
+    [dictionary setObject:[NSNumber numberWithBool:NO] forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary];
 }
@@ -147,15 +147,15 @@
     self.manager = [[SKBindingManager alloc] init];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    [dictionary setObject:@"name.textFieldText" forKey:BindingId];
     
-    [dictionary setObject:self.textField1 forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.textField2 forKey:kBindingOptionToObject];
+    [dictionary setObject:self.textField1 forKey:BindingFrom];
+    [dictionary setObject:self.textField2 forKey:BindingTo];
     
-    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
+    [dictionary setObject:BindingPropertyTextView forKey:BindingFromKeyPath];
+    [dictionary setObject:BindingPropertyTextView forKey:BindingToKeyPath];
     
-    [dictionary setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
+    [dictionary setObject:[NSNumber numberWithBool:YES] forKey:BindingTwoWayBinding];
 
     [self.manager bind:dictionary];
 }

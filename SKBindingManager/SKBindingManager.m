@@ -8,6 +8,22 @@
 
 #import "SKBindingManager.h"
 
+NSString *const BindingFrom = @"fromObject";
+NSString *const BindingTo = @"toObject";
+NSString *const BindingFromKeyPath = @"fromKeyPath";
+NSString *const BindingToKeyPath = @"toKeyPath";
+NSString *const BindingId = @"bindId";
+NSString *const BindingTwoWayBinding = @"twoWay";
+NSString *const BindingForwardTransformation = @"forwardTransformation";
+NSString *const BindingBackwardTransformation = @"backwardTransformation";
+
+NSString *const BindingPropertyLabel = @"text";
+NSString *const BindingPropertyTextField = @"text";
+NSString *const BindingPropertyTextView = @"text";
+NSString *const BindingPropertySwitch = @"on";
+NSString *const BindingPropertyStepper = @"value";
+NSString *const BindingPropertySlider = @"value";
+
 @interface SKVertex : NSObject
 @property (nonatomic, assign) id obj;
 @property (nonatomic, assign) NSString *keyPath;
@@ -281,23 +297,23 @@
 
 - (BOOL)bind:(NSDictionary *)bindingOptions {
     
-    BOOL twoWayBinding = [[bindingOptions objectForKey:kBindingOptionTwoWayBinding] boolValue];
-    NSString *bindId = [bindingOptions objectForKey:kBindingOptionBindId];
+    BOOL twoWayBinding = [[bindingOptions objectForKey:BindingTwoWayBinding] boolValue];
+    NSString *bindId = [bindingOptions objectForKey:BindingId];
     
     NSAssert(![self bindIdExists:bindId], @"Binding with id=%@, already exists", bindId);
     
     SKBinding *binding = [[SKBinding alloc] init];
     SKBinding *backwardBinding = nil;
     
-    binding.bindId = [bindingOptions objectForKey:kBindingOptionBindId];
+    binding.bindId = [bindingOptions objectForKey:BindingId];
     
-    binding.fromObject = [bindingOptions objectForKey:kBindingOptionFromObject];
-    binding.toObject = [bindingOptions objectForKey:kBindingOptionToObject];
+    binding.fromObject = [bindingOptions objectForKey:BindingFrom];
+    binding.toObject = [bindingOptions objectForKey:BindingTo];
     
-    binding.fromKeyPath = [bindingOptions objectForKey:kBindingOptionFromKeyPath];
-    binding.toKeyPath = [bindingOptions objectForKey:kBindingOptionToKeyPath];
+    binding.fromKeyPath = [bindingOptions objectForKey:BindingFromKeyPath];
+    binding.toKeyPath = [bindingOptions objectForKey:BindingToKeyPath];
     
-    binding.transformation = [bindingOptions objectForKey:kBindingOptionForwardTransformation];
+    binding.transformation = [bindingOptions objectForKey:BindingForwardTransformation];
     
     binding.active = YES;
     
@@ -308,15 +324,15 @@
     
     if (twoWayBinding) {
         backwardBinding = [[SKBinding alloc] init];
-        backwardBinding.bindId = [bindingOptions objectForKey:kBindingOptionBindId];
+        backwardBinding.bindId = [bindingOptions objectForKey:BindingId];
         
-        backwardBinding.fromObject = [bindingOptions objectForKey:kBindingOptionToObject];
-        backwardBinding.toObject = [bindingOptions objectForKey:kBindingOptionFromObject];
+        backwardBinding.fromObject = [bindingOptions objectForKey:BindingTo];
+        backwardBinding.toObject = [bindingOptions objectForKey:BindingFrom];
 
-        backwardBinding.fromKeyPath = [bindingOptions objectForKey:kBindingOptionToKeyPath];
-        backwardBinding.toKeyPath = [bindingOptions objectForKey:kBindingOptionFromKeyPath];
+        backwardBinding.fromKeyPath = [bindingOptions objectForKey:BindingToKeyPath];
+        backwardBinding.toKeyPath = [bindingOptions objectForKey:BindingFromKeyPath];
         
-        backwardBinding.transformation = [bindingOptions objectForKey:kBindingOptionBackwardTransformation];
+        backwardBinding.transformation = [bindingOptions objectForKey:BindingBackwardTransformation];
         
         backwardBinding.active = YES;
         

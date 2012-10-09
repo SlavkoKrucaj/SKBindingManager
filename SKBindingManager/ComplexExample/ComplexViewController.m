@@ -57,14 +57,14 @@
     };
 
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    
-    [dictionary setObject:@"stepper.label"                  forKey:kBindingOptionBindId];
-    [dictionary setObject:self.slider                       forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.label                        forKey:kBindingOptionToObject];
-    [dictionary setObject:kBindingStepperObservableProperty forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kBindingLabelObservableProperty   forKey:kBindingOptionToKeyPath];
-    [dictionary setObject:blockOp1                          forKey:kBindingOptionForwardTransformation];    
-    [dictionary setObject:[NSNumber numberWithBool:NO]      forKey:kBindingOptionTwoWayBinding];
+
+    [dictionary setObject:@"stepper.label"                  forKey:BindingId];
+    [dictionary setObject:self.slider                       forKey:BindingFrom];
+    [dictionary setObject:self.label                        forKey:BindingTo];
+    [dictionary setObject:BindingPropertyStepper            forKey:BindingFromKeyPath];
+    [dictionary setObject:BindingPropertyLabel              forKey:BindingToKeyPath];
+    [dictionary setObject:blockOp1                          forKey:BindingForwardTransformation];
+    [dictionary setObject:[NSNumber numberWithBool:NO]      forKey:BindingTwoWayBinding];
 
     [self.manager bind:dictionary];
 }
@@ -77,13 +77,13 @@
 
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setObject:@"stepper.slider"                     forKey:kBindingOptionBindId];
-    [dictionary setObject:self.stepper                          forKey:kBindingOptionFromObject];
-    [dictionary setObject:self.slider                           forKey:kBindingOptionToObject];
-    [dictionary setObject:kBindingStepperObservableProperty     forKey:kBindingOptionFromKeyPath];
-    [dictionary setObject:kBindingSliderObservableProperty      forKey:kBindingOptionToKeyPath];
-    [dictionary setObject:blockOp2                              forKey:kBindingOptionForwardTransformation];
-    [dictionary setObject:[NSNumber numberWithBool:YES]         forKey:kBindingOptionTwoWayBinding];
+    [dictionary setObject:@"stepper.slider"                     forKey:BindingId];
+    [dictionary setObject:self.stepper                          forKey:BindingFrom];
+    [dictionary setObject:self.slider                           forKey:BindingTo];
+    [dictionary setObject:BindingPropertyStepper                forKey:BindingFromKeyPath];
+    [dictionary setObject:BindingPropertySlider                 forKey:BindingToKeyPath];
+    [dictionary setObject:blockOp2                              forKey:BindingForwardTransformation];
+    [dictionary setObject:[NSNumber numberWithBool:YES]         forKey:BindingTwoWayBinding];
     [self.manager bind:dictionary];
 }
 
@@ -103,14 +103,14 @@
 
     NSMutableDictionary *dictionary2 = [NSMutableDictionary dictionary];
     
-    [dictionary2 setObject:@"stepper.tableView"                 forKey:kBindingOptionBindId];
-    [dictionary2 setObject:self.stepper                         forKey:kBindingOptionFromObject];
-    [dictionary2 setObject:self.tableView                       forKey:kBindingOptionToObject];
-    [dictionary2 setObject:kBindingStepperObservableProperty    forKey:kBindingOptionFromKeyPath];
-    [dictionary2 setObject:@"observableProperty"                forKey:kBindingOptionToKeyPath];
-    [dictionary2 setObject:blockOp3                             forKey:kBindingOptionForwardTransformation];
-    [dictionary2 setObject:blockOp31                            forKey:kBindingOptionBackwardTransformation];
-    [dictionary2 setObject:[NSNumber numberWithBool:YES]        forKey:kBindingOptionTwoWayBinding];
+    [dictionary2 setObject:@"stepper.tableView"                 forKey:BindingId];
+    [dictionary2 setObject:self.stepper                         forKey:BindingFrom];
+    [dictionary2 setObject:self.tableView                       forKey:BindingTo];
+    [dictionary2 setObject:BindingPropertyStepper    forKey:BindingFromKeyPath];
+    [dictionary2 setObject:@"observableProperty"                forKey:BindingToKeyPath];
+    [dictionary2 setObject:blockOp3                             forKey:BindingForwardTransformation];
+    [dictionary2 setObject:blockOp31                            forKey:BindingBackwardTransformation];
+    [dictionary2 setObject:[NSNumber numberWithBool:YES]        forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary2];
 }
@@ -124,13 +124,13 @@
 
     NSMutableDictionary *dictionary2 = [NSMutableDictionary dictionary];
     
-    [dictionary2 setObject:@"slider.pickerView"                 forKey:kBindingOptionBindId];
-    [dictionary2 setObject:self.slider                          forKey:kBindingOptionFromObject];
-    [dictionary2 setObject:self.pickerView                      forKey:kBindingOptionToObject];
-    [dictionary2 setObject:kBindingStepperObservableProperty    forKey:kBindingOptionFromKeyPath];
-    [dictionary2 setObject:@"observableProperty"                forKey:kBindingOptionToKeyPath];
-    [dictionary2 setObject:blockOp6                             forKey:kBindingOptionForwardTransformation];
-    [dictionary2 setObject:[NSNumber numberWithBool:YES]        forKey:kBindingOptionTwoWayBinding];
+    [dictionary2 setObject:@"slider.pickerView"                 forKey:BindingId];
+    [dictionary2 setObject:self.slider                          forKey:BindingFrom];
+    [dictionary2 setObject:self.pickerView                      forKey:BindingTo];
+    [dictionary2 setObject:BindingPropertyStepper    forKey:BindingFromKeyPath];
+    [dictionary2 setObject:@"observableProperty"                forKey:BindingToKeyPath];
+    [dictionary2 setObject:blockOp6                             forKey:BindingForwardTransformation];
+    [dictionary2 setObject:[NSNumber numberWithBool:YES]        forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary2];
     
@@ -140,12 +140,12 @@
     
     NSMutableDictionary *dictionary2 = [NSMutableDictionary dictionary];
     
-    [dictionary2 setObject:@"textField.textView"                forKey:kBindingOptionBindId];
-    [dictionary2 setObject:self.textView                        forKey:kBindingOptionFromObject];
-    [dictionary2 setObject:self.textField                       forKey:kBindingOptionToObject];
-    [dictionary2 setObject:kBindingTextViewObservableProperty   forKey:kBindingOptionFromKeyPath];
-    [dictionary2 setObject:kBindingTextViewObservableProperty   forKey:kBindingOptionToKeyPath];
-    [dictionary2 setObject:[NSNumber numberWithBool:YES]        forKey:kBindingOptionTwoWayBinding];
+    [dictionary2 setObject:@"textField.textView"                forKey:BindingId];
+    [dictionary2 setObject:self.textView                        forKey:BindingFrom];
+    [dictionary2 setObject:self.textField                       forKey:BindingTo];
+    [dictionary2 setObject:BindingPropertyTextView   forKey:BindingFromKeyPath];
+    [dictionary2 setObject:BindingPropertyTextView   forKey:BindingToKeyPath];
+    [dictionary2 setObject:[NSNumber numberWithBool:YES]        forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary2];
 
@@ -163,14 +163,14 @@
 
     NSMutableDictionary *dictionary1 = [NSMutableDictionary dictionary];
     
-    [dictionary1 setObject:@"switch.textField"              forKey:kBindingOptionBindId];
-    [dictionary1 setObject:self.switchControl               forKey:kBindingOptionFromObject];
-    [dictionary1 setObject:self.boolTextField               forKey:kBindingOptionToObject];
-    [dictionary1 setObject:kBindingSwitchObservableProperty forKey:kBindingOptionFromKeyPath];
-    [dictionary1 setObject:kBindingLabelObservableProperty  forKey:kBindingOptionToKeyPath];
-    [dictionary1 setObject:blockOp4                         forKey:kBindingOptionForwardTransformation];    
-    [dictionary1 setObject:blockOp5                         forKey:kBindingOptionBackwardTransformation];
-    [dictionary1 setObject:[NSNumber numberWithBool:YES]    forKey:kBindingOptionTwoWayBinding];
+    [dictionary1 setObject:@"switch.textField"              forKey:BindingId];
+    [dictionary1 setObject:self.switchControl               forKey:BindingFrom];
+    [dictionary1 setObject:self.boolTextField               forKey:BindingTo];
+    [dictionary1 setObject:BindingPropertySwitch            forKey:BindingFromKeyPath];
+    [dictionary1 setObject:BindingPropertyLabel             forKey:BindingToKeyPath];
+    [dictionary1 setObject:blockOp4                         forKey:BindingForwardTransformation];    
+    [dictionary1 setObject:blockOp5                         forKey:BindingBackwardTransformation];
+    [dictionary1 setObject:[NSNumber numberWithBool:YES]    forKey:BindingTwoWayBinding];
     
     [self.manager bind:dictionary1];
 }

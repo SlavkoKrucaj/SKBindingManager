@@ -47,15 +47,15 @@
     NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
     
 	//set binding id for this connection
-    [bindingOptions setObject:@"name.textFieldText" forKey:kBindingOptionBindId];
+    [bindingOptions setObject:@"name.textFieldText" forKey:BindingId];
     
     //set object and propety - from 
-    [bindingOptions setObject:self.person forKey:kBindingOptionFromObject];
-    [bindingOptions setObject:@"name" forKey:kBindingOptionFromKeyPath];
-    
+    [bindingOptions setObject:self.person forKey:BindingFrom];
+    [bindingOptions setObject:@"name" forKey:BindingFromKeyPath];
+
     //set object and property - to
-    [bindingOptions setObject:self.textField forKey:kBindingOptionToObject];
-    [bindingOptions setObject:kBindingTextViewObservableProperty forKey:kBindingOptionToKeyPath];
+    [bindingOptions setObject:self.textField forKey:BindingTo];
+    [bindingOptions setObject:BindingPropertyTextView forKey:BindingToKeyPath];
     
     SKTransformationBlock transformation = ^(id value, id toObject) { 
         NSString *name = (NSString *)value;
@@ -63,10 +63,10 @@
     };
     
     //set transformation as backward because it goes from 'to object' to 'from object'
-    [bindingOptions setObject:transformation forKey:kBindingOptionBackwardTransformation];
+    [bindingOptions setObject:transformation forKey:BindingBackwardTransformation];
     
     //specify if you want two-way or one-way binding
-    [bindingOptions setObject:[NSNumber numberWithBool:YES] forKey:kBindingOptionTwoWayBinding];
+    [bindingOptions setObject:[NSNumber numberWithBool:YES] forKey:BindingTwoWayBinding];
     
     //add binding
     [self.bindingManager bind:bindingOptions];

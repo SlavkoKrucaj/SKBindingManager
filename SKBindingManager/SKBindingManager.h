@@ -8,21 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-#define kBindingOptionFromObject                @"fromObject"
-#define kBindingOptionToObject                  @"toObject"
-#define kBindingOptionFromKeyPath               @"fromKeyPath"
-#define kBindingOptionToKeyPath                 @"toKeyPath"
-#define kBindingOptionBindId                    @"bindId"
-#define kBindingOptionTwoWayBinding             @"twoWay"
-#define kBindingOptionForwardTransformation     @"forwardTransformation"
-#define kBindingOptionBackwardTransformation    @"backwardTransformation"
+extern NSString *const BindingFrom;
+extern NSString *const BindingTo;
+extern NSString *const BindingFromKeyPath;
+extern NSString *const BindingToKeyPath;
+extern NSString *const BindingId;
+extern NSString *const BindingTwoWayBinding;
+extern NSString *const BindingForwardTransformation;
+extern NSString *const BindingBackwardTransformation;
 
-#define kBindingLabelObservableProperty        @"text"
-#define kBidningTextFieldObservableProperty    @"text"
-#define kBindingTextViewObservableProperty     @"text"
-#define kBindingSwitchObservableProperty       @"on"
-#define kBindingStepperObservableProperty      @"value"
-#define kBindingSliderObservableProperty       @"value"
+extern NSString *const BindingPropertyLabel;
+extern NSString *const BindingPropertyTextField;
+extern NSString *const BindingPropertyTextView;
+extern NSString *const BindingPropertySwitch;
+extern NSString *const BindingPropertyStepper;
+extern NSString *const BindingPropertySlider;
 
 typedef id (^SKTransformationBlock)(id value, id onObject);
 
