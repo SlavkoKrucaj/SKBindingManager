@@ -25,20 +25,17 @@ NSString *const BindingPropertyStepper = @"value";
 NSString *const BindingPropertySlider = @"value";
 
 @interface SKVertex : NSObject
-@property (nonatomic, assign) id obj;
-@property (nonatomic, assign) NSString *keyPath;
-@property (nonatomic, assign) NSMutableArray *adjacentVertices;
+@property id obj;
+@property NSString *keyPath;
+@property NSMutableArray *adjacentVertices;
 @end
 
 @implementation SKVertex : NSObject
-@synthesize obj;
-@synthesize keyPath;
-@synthesize adjacentVertices;
 
 - (BOOL)isEqual:(id)object {
     if (![object isKindOfClass:[SKVertex class]]) return NO;
     
-    return (obj == ((SKVertex *)object).obj && [keyPath isEqualToString:((SKVertex *)object).keyPath]);
+    return (self.obj == ((SKVertex *)object).obj && [self.keyPath isEqualToString:((SKVertex *)object).keyPath]);
 }
 
 - (NSUInteger)hash {
@@ -52,9 +49,9 @@ NSString *const BindingPropertySlider = @"value";
 - (id)copyWithZone:(NSZone *)zone
 {
     SKVertex *copy = [[[self class] allocWithZone:zone] init];
-    copy->obj = nil; [copy setObj:[self obj]];
-    copy->keyPath = nil; [copy setKeyPath:[self keyPath]];
-    copy->adjacentVertices = nil; [copy setAdjacentVertices:[self adjacentVertices]];
+    copy.obj = nil; [copy setObj:[self obj]];
+    copy.keyPath = nil; [copy setKeyPath:[self keyPath]];
+    copy.adjacentVertices = nil; [copy setAdjacentVertices:[self adjacentVertices]];
 
     return copy;
 }
@@ -62,36 +59,24 @@ NSString *const BindingPropertySlider = @"value";
 
 @interface SKBinding : NSObject
 
-@property (nonatomic, retain) NSString *bindId;
-@property (nonatomic, retain) id fromObject;
-@property (nonatomic, retain) id toObject;
-@property (nonatomic, retain) NSString *fromKeyPath;
-@property (nonatomic, retain) NSString *toKeyPath;
-@property (nonatomic, assign) BOOL active;
-@property (nonatomic, copy)   SKTransformationBlock transformation;
+@property (strong) NSString *bindId;
+@property (strong) id fromObject;
+@property (strong) id toObject;
+@property (strong) NSString *fromKeyPath;
+@property (strong) NSString *toKeyPath;
+@property BOOL active;
+@property (strong) SKTransformationBlock transformation;
 
 @end
 
 @implementation SKBinding
-
-@synthesize bindId;
-@synthesize fromObject;
-@synthesize toObject;
-@synthesize fromKeyPath;
-@synthesize toKeyPath;
-@synthesize transformation;
-@synthesize active;
-
 @end
 
 @interface SKBindingManager()
-@property (nonatomic, retain) NSMutableArray *bindings;
+@property NSMutableArray *bindings;
 @end
 
 @implementation SKBindingManager
-
-@synthesize bindings;
-@synthesize delegate;
 
 - (id)init {
     self = [super init];
