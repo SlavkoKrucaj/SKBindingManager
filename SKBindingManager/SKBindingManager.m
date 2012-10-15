@@ -16,6 +16,7 @@ NSString *const BindingId = @"bindId";
 NSString *const BindingTwoWayBinding = @"twoWay";
 NSString *const BindingForwardTransformation = @"forwardTransformation";
 NSString *const BindingBackwardTransformation = @"backwardTransformation";
+NSString *const BindingInitialValue = @"initialValue";
 
 NSString *const BindingPropertyLabel = @"text";
 NSString *const BindingPropertyTextField = @"text";
@@ -23,6 +24,9 @@ NSString *const BindingPropertyTextView = @"text";
 NSString *const BindingPropertySwitch = @"on";
 NSString *const BindingPropertyStepper = @"value";
 NSString *const BindingPropertySlider = @"value";
+
+NSString *const BindingInitialValueFrom = @"initialFrom";
+NSString *const BindingInitialValueTo = @"initialTo";
 
 @interface SKVertex : NSObject
 @property id obj;
@@ -354,18 +358,19 @@ NSString *const BindingPropertySlider = @"value";
         }
     }
     
-    if (twoWayBinding && 
-               [binding.fromObject isKindOfClass:[UIView class]] && 
-               ![binding.toObject isKindOfClass:[UIView class]]) {
+    if ([[bindingOptions objectForKey:BindingInitialValue] isEqualToString:BindingInitialValueFrom] ||
+        ![bindingOptions objectForKey:BindingInitialValue]) {
+    
+        id value = [binding.fromObject valueForKeyPath:binding.fromKeyPath];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
+        [self observeValueForKeyPath:binding.fromKeyPath ofObject:binding.fromObject change:dict context:(void *)binding.bindId];
         
+    } else if ([[bindingOptions objectForKey:BindingInitialValue] isEqualToString:BindingInitialValueTo]){
+    
         id value = [binding.toObject valueForKeyPath:binding.toKeyPath];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
         [self observeValueForKeyPath:binding.toKeyPath ofObject:binding.toObject change:dict context:(void *)binding.bindId];
         
-    } else {
-        id value = [binding.fromObject valueForKeyPath:binding.fromKeyPath];
-        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", @"kind", value, @"new", nil];
-        [self observeValueForKeyPath:binding.fromKeyPath ofObject:binding.fromObject change:dict context:(void *)binding.bindId];
     }
     
     return YES;
@@ -394,10 +399,6 @@ NSString *const BindingPropertySlider = @"value";
     
 }
 
-- (BOOL)unbind:(NSDictionary *)bindingOptions {
-    return YES;
-}
-
 - (void)removeAllBindings {
     for (SKBinding *binding in self.bindings) {
         if (binding.active) {
@@ -418,6 +419,39 @@ NSString *const BindingPropertySlider = @"value";
             [self observeValueForKeyPath:binding.fromKeyPath ofObject:textView change:dict context:(void *)binding.bindId];
             
         }
+    }
+}
+
+- (void)activateAllBindings {
+    for (SKBinding *binding in self.bindings) {
+            
+        binding.active = YES;
+        
+        [binding.fromObject addObserver:self
+                             forKeyPath:binding.fromKeyPath
+                                options:(NSKeyValueObservingOptionNew)
+                                context:(void*)binding.bindId];
+        
+        if ([binding.fromObject isKindOfClass:[UIView class]]) {
+            [self setupBindingForUIKitWithBinding:binding];
+        }
+        
+    }
+}
+
+- (void)deactivateAllBindings {
+    for (SKBinding *binding in self.bindings) {
+            
+        binding.active = NO;
+        
+        [binding.fromObject removeObserver:self
+                                forKeyPath:binding.fromKeyPath
+                                   context:(void*)binding.bindId];
+        
+        if ([binding.fromObject isKindOfClass:[UIView class]]) {
+            [self deactivateBindingForUIKit:binding];
+        }
+        
     }
 }
 
