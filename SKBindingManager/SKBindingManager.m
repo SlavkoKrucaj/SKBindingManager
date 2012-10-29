@@ -424,7 +424,9 @@ NSString *const BindingInitialValueTo = @"initialTo";
 
 - (void)activateAllBindings {
     for (SKBinding *binding in self.bindings) {
-            
+        
+        if (binding.active) continue;
+        
         binding.active = YES;
         
         [binding.fromObject addObserver:self
@@ -441,6 +443,8 @@ NSString *const BindingInitialValueTo = @"initialTo";
 
 - (void)deactivateAllBindings {
     for (SKBinding *binding in self.bindings) {
+        
+        if (!binding.active) continue;
             
         binding.active = NO;
         
